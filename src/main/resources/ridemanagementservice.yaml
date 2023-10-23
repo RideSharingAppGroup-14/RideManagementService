@@ -1,0 +1,57 @@
+swagger: "2.0"
+info:
+  title: RideManagementService
+  description: The ride management service describes the functionality of uber application for the user.
+  version: 1.0.0
+host: www.localhost:8080
+schemes:
+  - https
+  - http
+paths:
+  /searchVehicle:
+    get:
+      description: List the vehicles with fare.
+      responses:
+        200:
+          description: List the 2, 3 and 4 weeler vehicles.
+        203:
+          description: User session expired/ not authenticated.
+
+  /bookRide:
+    post:
+      summary: start the ride
+      responses:
+        200:
+          description: Ride booked for the user.
+        203:
+          description: User session expired/ not authenticated.
+
+  /cancelRide:
+    post:
+      summary: cancel the on going ride.
+      parameters:
+        -String: reason
+        -String: comments
+      responses:
+        200:
+          description: Ride of the user cancelled.
+        203:
+          description: User session expired/ not authenticated.
+
+  /endRide:
+    post:
+      summary: End the ride
+      responses:
+        200:
+          description: Ride successfully ended.
+        203:
+          description: User session expired/ not authenticated.
+
+  /history:
+    get:
+      summary: fetch ride history.
+      responses:
+        200:
+          description: List down all ride history.
+        203:
+          description: User session expired/ not authenticated.
