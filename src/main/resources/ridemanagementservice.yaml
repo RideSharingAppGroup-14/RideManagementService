@@ -37,14 +37,19 @@ paths:
           description: User session expired/ not authenticated.
 
 
-  /updateRide/{userId}:
+  /updateRide/{user}:
     put:
       description: Api should update the status of ride.
       parameters:
         -id: path
-        name: userId
+        name: user.userId
         required: true
         type: Integer
+
+        -id: path
+        name: user.userRideState
+        required: true
+        type: String
       responses:
 
 
