@@ -4,6 +4,14 @@ info:
   description: The ride management service describes the functionality of uber application for the user.
   version: 1.0.0
 host: www.localhost:8080
+
+
+userid: Integer
+password: String
+langitude: Double
+latitude: Double
+baseLocation: String
+
 schemes:
   - https
   - http
