@@ -73,14 +73,19 @@ paths:
         203:
           description: User session expired/ not authenticated.
 
-  /bookRide{id}:
+  /bookRide{user}:
     post:
       summary: start the ride
       parameters:
         -id: path
-        name: id
+        name: userid
         requied: true
         type: Integer
+
+        -id: path
+        name: user.userRideState
+        requied: true
+        type: String
       responses:
         200:
           description: Ride booked for the user.
