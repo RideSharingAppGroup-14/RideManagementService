@@ -8,48 +8,108 @@ schemes:
   - https
   - http
 paths:
-  /searchVehicle:
+  /viewRide/{user}:
+    get:
+      description: to view the ongoing rides.
+      parameters:
+        -in: path
+        name: user.userId
+        required: true
+        type: Integer
+
+        -in: path
+        name: user.userRideState
+        required: true
+        type: String
+
+      responses:
+        200:
+          description: Output the ongoing ride.
+        203:
+          description: User session expired/ not authenticated.
+
+
+  /updateRide/{userId}:
+    put:
+      description: Api should update the status of ride.
+      parameters:
+        -id: path
+        name: userId
+        required: true
+        type: Integer
+      responses:
+
+
+  /searchVehicle/{id}:
     get:
       description: List the vehicles with fare.
+      parameters:
+        -id: path
+        name: id.longitude
+        required: true
+        type: Double
+
+        -id: path
+        name: id.latitude
+        required: true
+        type: Double
+
       responses:
         200:
           description: List the 2, 3 and 4 weeler vehicles.
         203:
           description: User session expired/ not authenticated.
 
-  /bookRide:
+  /bookRide{id}:
     post:
       summary: start the ride
+      parameters:
+        -id: path
+        name: id
+        requied: true
+        type: Integer
       responses:
         200:
           description: Ride booked for the user.
         203:
           description: User session expired/ not authenticated.
 
-  /cancelRide:
+  /cancelRide{id}:
     post:
       summary: cancel the on going ride.
       parameters:
-        -String: reason
-        -String: comments
+        -id: path
+        name: id
+        requied: true
+        type: Integer
       responses:
         200:
           description: Ride of the user cancelled.
         203:
           description: User session expired/ not authenticated.
 
-  /endRide:
+  /endRide{id}:
     post:
       summary: End the ride
+      parameters:
+        -id: path
+        name: id
+        requied: true
+        type: Integer
       responses:
         200:
           description: Ride successfully ended.
         203:
           description: User session expired/ not authenticated.
 
-  /history:
+  /history{id}:
     get:
       summary: fetch ride history.
+      parameters:
+        -id: path
+        name: id
+        requied: true
+        type: Integer
       responses:
         200:
           description: List down all ride history.
