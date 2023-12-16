@@ -4,19 +4,64 @@ info:
   description: The ride management service describes the functionality of uber application for the user.
   version: 1.0.0
 host: www.localhost:8080
-
-
-userid: Integer
-password: String
-langitude: Double
-latitude: Double
-baseLocation: String
+#
+#                    created
+#                    processing
+#                    assigned
+#                    started
+#                    ended
+#                    completed
+#                    cancelled
+#userid: Integer
+#password: String
+#langitude: Double
+#latitude: Double
+#langitude: Double
+#latitude: Double
+#baseLocation: String
 
 schemes:
   - https
   - http
 paths:
-  /viewRide/{user}:
+  /profile/{rider_id}:
+    get:
+      summary: "View Rider's detail"
+      description: "Rider's with valid id will be shown"
+      parameters:
+        - in: path
+          name: rider_id
+          required: true
+          schema:
+            type: string
+
+      responses:
+        200:
+          description: "bh"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  first_name:
+                    type: string
+
+
+#put:
+#  Summary: "Update the Rider's profile"
+#  RequestBody:{
+#  email: Strings
+#  phonenumber: number
+#  ResponseBody:
+#    200:{"Profile Updated"}
+#    400:{"Bad Request"}
+
+    put:
+      summary: Update Rider's Profile
+      description: Rider with valid rider Id can
+
+
+  /viewRide/{rideid}:
     get:
       description: to view the ongoing rides.
       parameters:
@@ -53,30 +98,33 @@ paths:
       responses:
 
 
-  /searchVehicle/{id}:
-    get:
-      description: List the vehicles with fare.
-      parameters:
-        -id: path
-        name: id.longitude
-        required: true
-        type: Double
+#  /searchVehicle/{id}:
+#    get:
+#      description: List the vehicles with fare.
+#      parameters:
+#        -id: path
+#        name: id.longitude
+#        required: true
+#        type: Double
+#
+#        -id: path
+#        name: id.latitude
+#        required: true
+#        type: Double
+#
+#      responses:
+#        200:
+#          description: List the 2, 3 and 4 weeler vehicles.
+#        203:
+#          description: User session expired/ not authenticated.
 
-        -id: path
-        name: id.latitude
-        required: true
-        type: Double
-
-      responses:
-        200:
-          description: List the 2, 3 and 4 weeler vehicles.
-        203:
-          description: User session expired/ not authenticated.
-
-  /bookRide{user}:
+  /bookRide{userId}:
     post:
       summary: start the ride
       parameters:
+
+#
+#        start end latitude longitude
         -id: path
         name: userid
         requied: true
